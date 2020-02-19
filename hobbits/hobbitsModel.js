@@ -9,7 +9,12 @@ module.exports = {
 };
 
 async function insert(hobbit) {
-  return null;
+  const [ id ] = await db('hobbits').insert(hobbit, 'id');
+  return db('hobbits')
+    .where({id})
+    .first(); 
+
+    //return null;
 }
 
 async function update(id, changes) {
